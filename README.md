@@ -5,3 +5,4 @@ Methods
 - insert
 - lookup
 - remove
+- traverse
