@@ -7,6 +7,9 @@ class BinarySearchTree:
 
     def insert(self, value):
         new_node = Node(value)
+        if self.root is None:
+            self.root = new_node
+            return
         n = self.root
         while n is not None:
             if value > n.value:
@@ -93,3 +96,9 @@ class BinarySearchTree:
                         elif current.value > parent.value:
                             parent.right = left_most
                 return True
+
+    def traverse(self, node):
+        tree = node
+        tree.left = None if node.left is None else self.traverse(node.left)
+        tree.right = None if node.right is None else self.traverse(node.right)
+        return tree
