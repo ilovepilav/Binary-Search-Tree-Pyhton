@@ -102,3 +102,29 @@ class BinarySearchTree:
         tree.left = None if node.left is None else self.traverse(node.left)
         tree.right = None if node.right is None else self.traverse(node.right)
         return tree
+
+    def breadth_first_search(self):
+        current_node = self.root
+        list = []
+        queue = []
+        queue.append(current_node)
+
+        while(len(queue) > 0):
+            current_node = queue.pop(0)
+            list.append(current_node.value)
+            if current_node.left is not None:
+                queue.append(current_node.left)
+            if current_node.right is not None:
+                queue.append(current_node.right)
+        return list
+
+    def breadth_first_search_rec(self, queue, list=[]):
+        if len(queue) < 1:
+            return list
+        current_node = queue.pop(0)
+        list.append(current_node.value)
+        if current_node.left is not None:
+            queue.append(current_node.left)
+        if current_node.right is not None:
+            queue.append(current_node.right)
+        return self.breadth_first_search_rec(queue, list)
